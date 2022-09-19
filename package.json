@@ -1,13 +1,13 @@
 {
-  "name": "appserver",
+  "name": "appServer",
   "version": "1.0.0",
-  "description": "App Server bang NodeJS cua Mr.Tu",
+  "description": "",
   "main": "appServer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Mr.Tu - CabX.vn",
+  "author": "Quang Huy - ms4k",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1"
