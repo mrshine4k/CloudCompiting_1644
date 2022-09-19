@@ -1,8 +1,8 @@
 {
-  "name": "appServer",
+  "name": "appserver",
   "version": "1.0.0",
   "description": "",
-  "main": "appServer.js",
+  "main": "appserver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
