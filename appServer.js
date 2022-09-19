@@ -3,6 +3,8 @@ const PORT = process.env.port || 80;
 const appserver = express();
 const router = express.Router();
 const fs = require("fs");
+const host = '0.0.0.0';
+
 
 // ------------------- Routing
 router.get( "/" , (yeucau, trave) => {
@@ -14,6 +16,6 @@ router.get( "/" , (yeucau, trave) => {
 // -------------------------
 appserver.use("/", router);
 // ----------- RUN / Lauching !!! 
-appserver.listen( PORT );
+appserver.listen( PORT,host );
 
 console.log("Web da mo tai " + PORT);
