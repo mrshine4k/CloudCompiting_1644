@@ -12,21 +12,33 @@ router.use('/',(yeucau, trave, tieptuc) => {
     tieptuc();
 });
 
+router.use((loixayra, yeucau, trave, tieptuc) => {
+    console.log("ERROR: ", Date.now(), yeucau.url);
+    console.log("loixayra");
+    trave.status(500).send("Dang co loi xay ra, chua biet o vi tri nao");
+});
+
 // -------------------------------------------------- Routing
 router.get( "/" , (yeucau, trave) => {
-    data = fs.readFileSync("./view/main.html");
+    data = fs.readFileSync("./html/main.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
 router.get( "/home" , (yeucau, trave) => {
-    data = fs.readFileSync("./view/home.html");
+    data = fs.readFileSync("./html/home.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
 router.get( "/products" , (yeucau, trave) => {
-    data = fs.readFileSync("./view/products.html");
+    data = fs.readFileSync("./html/products.html");
+    pageContent = data.toString();
+    trave.send(pageContent);
+});
+
+router.get( "/login" , (yeucau, trave) => {
+    data = fs.readFileSync("./html/login.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
