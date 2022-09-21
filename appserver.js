@@ -1,61 +1,62 @@
-const bodyParser = require("body-parser");
-const express = require("express");
+const  express = require("express");
 const PORT = process.env.PORT || 80;
 const appServer = express();
 const router = express.Router();
 const fs = require("fs");
-const { Session } = require("inspector");
-const { nextTick } = require("process");
 
-//-------------------------------------------------middleware
+// Middleware
+const bodyParser = require("body-parser");
 
-router.use('/', (yeucau, trave, tieptuc) => {
-    console.log('Time:', Date.now(), yeucau.url);
-    tieptuc();
+
+// ------------------- Middleware - kiem soat tinh huong
+router.use( (yeucau, trave, ketiep) => { 
+    console.log("REQ: ", Date.now(), yeucau.url);
+    ketiep();
 });
 
-router.use((loixayra, yeucau, trave, tieptuc) => {
+router.use( (loixayra, yeucau, trave, ketiep) => { 
     console.log("ERROR: ", Date.now(), yeucau.url);
-    console.log("loixayra");
-    trave.status(500).send("Dang co loi xay ra, chua biet o vi tri nao");
+    console.log(loixayra);
+    trave.status(500).send("Dang co loi xay ra, chua biet o dau !!!");
 });
 
-// -------------------------------------------------- Routing
-router.get("/", (yeucau, trave) => {
+// ------------------- Routing
+router.get( "/" , (yeucau, trave) => {
     data = fs.readFileSync("./html/main.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
-router.get("/home", (yeucau, trave) => {
+router.get( "/home" , (yeucau, trave) => {
     data = fs.readFileSync("./html/home.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
-router.get("/products", (yeucau, trave) => {
-    data = fs.readFileSync("./html/products.html");
-    pageContent = data.toString();
-    trave.send(pageContent);
-});
-
-router.get("/login", (yeucau, trave) => {
+router.get( "/login" , (yeucau, trave) => {
     data = fs.readFileSync("./html/login.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
-//------------------------------------------- add  middleware
 
+
+
+//--- Add middleware
+//const session = express.session();
 appServer.use(bodyParser.json());
-appServer.use(Session({ secret: "id-session-test" }));
+//appServer.use(session({secret: "id-session-Mr.Tu"​}));
 
-// ---------------------------------------------use
 
+// ------------------------- Add Router / Controller
 appServer.use("/", router);
 
-// ----------- RUN / Launching !!! 
+const ProductRouter = require("./controller/productController").ProductRouter;
 
-appServer.listen(PORT);
+appServer.use("/products", ProductRouter);
+
+
+// ----------- RUN / Launching !!! 
+appServer.listen( PORT );
 
 console.log("Web da mo tai " + PORT);
