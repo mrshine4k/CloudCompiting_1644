@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MAIN page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
 
   
       <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
@@ -13,6 +14,9 @@
   
   
       <style>
+        main {
+            top: 100px;
+        }
         .bd-placeholder-img {
           font-size: 1.125rem;
           text-anchor: middle;
@@ -63,11 +67,36 @@
           white-space: nowrap;
           -webkit-overflow-scrolling: touch;
         }
+        fieldset {
+
+        padding: 10px;
+        width: 500px;
+        text-align: left;
+        }
+
+        .imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+canhform {
+    display: flex;
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+}
       </style>
   
       
-      <!-- Custom styles for this template -->
-      <link href="carousel.css" rel="stylesheet">
     </head>
   
     <body>
@@ -109,31 +138,30 @@
       </div>
     </nav>
   </header>
-  <br><br><br><hr><br><br>
+  
   <main>
-    <form action="action_page.php" method="post">
+    <h1> Login page </h1>
+
+    <canhform>
+    <fieldset>
+    <form method="GET">
         <div class="imgcontainer">
-          <img src="img_avatar2.png" alt="Avatar" class="avatar">
+            <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+          </div>
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Tên tài khoản ... </label>
+            <input class="form-control" type="text" id="username" name="username">
         </div>
-      
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-      
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
+        <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input class="form-control" type="password" id="password" name="password" >
         </div>
-      
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-      </form>
+
+        <button type="submit" class="btn btn-primary">Đăng nhập </button>
+    </form>
+    </fieldset>
+</canhform>
   </main>
 
   <footer>
