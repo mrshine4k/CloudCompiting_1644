@@ -1,8 +1,10 @@
+const bodyParser = require("body-parser");
 const  express = require("express");
 const PORT = process.env.PORT || 80;
 const appServer = express();
 const router = express.Router();
 const fs = require("fs");
+const { Session } = require("inspector");
 const { nextTick } = require("process");
 
 //-------------------------------------------------middleware
@@ -42,6 +44,11 @@ router.get( "/login" , (yeucau, trave) => {
     pageContent = data.toString();
     trave.send(pageContent);
 });
+
+//------------------------------------------- add  middleware
+
+appServer.use(bodyParser.json());
+appServer.use(Session({ secret: "id-session-test" }));
 
 // ---------------------------------------------use
 
