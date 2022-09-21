@@ -1,5 +1,5 @@
 const bodyParser = require("body-parser");
-const  express = require("express");
+const express = require("express");
 const PORT = process.env.PORT || 80;
 const appServer = express();
 const router = express.Router();
@@ -9,7 +9,7 @@ const { nextTick } = require("process");
 
 //-------------------------------------------------middleware
 
-router.use('/',(yeucau, trave, tieptuc) => {
+router.use('/', (yeucau, trave, tieptuc) => {
     console.log('Time:', Date.now(), yeucau.url);
     tieptuc();
 });
@@ -21,25 +21,25 @@ router.use((loixayra, yeucau, trave, tieptuc) => {
 });
 
 // -------------------------------------------------- Routing
-router.get( "/" , (yeucau, trave) => {
+router.get("/", (yeucau, trave) => {
     data = fs.readFileSync("./html/main.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
-router.get( "/home" , (yeucau, trave) => {
+router.get("/home", (yeucau, trave) => {
     data = fs.readFileSync("./html/home.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
-router.get( "/products" , (yeucau, trave) => {
+router.get("/products", (yeucau, trave) => {
     data = fs.readFileSync("./html/products.html");
     pageContent = data.toString();
     trave.send(pageContent);
 });
 
-router.get( "/login" , (yeucau, trave) => {
+router.get("/login", (yeucau, trave) => {
     data = fs.readFileSync("./html/login.html");
     pageContent = data.toString();
     trave.send(pageContent);
@@ -56,6 +56,6 @@ appServer.use("/", router);
 
 // ----------- RUN / Launching !!! 
 
-appServer.listen( PORT );
+appServer.listen(PORT);
 
 console.log("Web da mo tai " + PORT);
