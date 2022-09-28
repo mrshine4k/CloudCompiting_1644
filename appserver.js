@@ -3,6 +3,12 @@ const PORT = process.env.PORT || 8000;
 const appServer = express();
 const router = express.Router();
 const fs = require("fs");
+const path = require('path');
+
+
+//engine setup
+appServer.set("views", path.join(__dirname, 'view'));
+appServer.set("view engine", "hbs"); //setting view
 
 // Middleware
 const bodyParser = require("body-parser");
@@ -25,15 +31,11 @@ router.use( (loixayra, yeucau, trave, ketiep) => {
 
 // ------------------- Routing
 router.get( "/" , (yeucau, trave) => {
-    data = fs.readFileSync("./html/main.html");
-    pageContent = data.toString();
-    trave.send(pageContent);
+    trave.render("main", {TenTrang: "Main chinh"});
 });
 
 router.get( "/home" , (yeucau, trave) => {
-    data = fs.readFileSync("./html/home.html");
-    pageContent = data.toString();
-    trave.send(pageContent);
+    trave.render("home", {TenTrang: "Home nha"});
 });
 
 
