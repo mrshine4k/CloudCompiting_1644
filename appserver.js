@@ -4,6 +4,7 @@ const appServer = express();
 const router = express.Router();
 const fs = require("fs");
 const path = require('path');
+const url = "mongodb://localhost:27017/";
 
 
 //engine setup
